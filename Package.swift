@@ -20,8 +20,8 @@ let package = Package(
 
         .binaryTarget(
             name: "readline",
-            url: "https://github.com/mpvkit/readline-build/releases/download/8.2.0-xcode26/readline.xcframework.zip",
-            checksum: "36b0457c60898c009b2468a9f9be3f79b2cafb3a5477cbf71bf1f874fcaf12a5"
+            url: "https://github.com/mpvkit/readline-build/releases/download/8.2.0-xcode/readline.xcframework.zip",
+            checksum: "5a58f98bb02effedb104e4fbe4c561f17b21d8936e2783f7fee71eaaa0ead180"
         ),
         //AUTO_GENERATE_TARGETS_END//
     ]
