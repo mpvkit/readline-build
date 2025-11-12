@@ -913,20 +913,20 @@ enum PlatformType: String, CaseIterable {
     var frameworkName: String {
         switch self {
         case .ios:
-            return "ios-arm64"
+            return "ios-arm64_arm64e"
         case .maccatalyst:
-            return "ios-arm64_x86_64-maccatalyst"
+            return "ios-arm64_arm64e_x86_64-maccatalyst"
         case .isimulator:
             return "ios-arm64_x86_64-simulator"
         case .macos:
-            return "macos-arm64_x86_64"
+            return "macos-arm64_arm64e_x86_64"
         case .tvos:
             // 保持和xcode一致：https://github.com/KhronosGroup/MoltenVK/issues/431#issuecomment-771137085
             return "tvos-arm64_arm64e"
         case .tvsimulator:
             return "tvos-arm64_x86_64-simulator"
         case .xros:
-            return "xros-arm64"
+            return "xros-arm64_arm64e"
         case .xrsimulator:
             return "xros-arm64_x86_64-simulator"
         }
@@ -936,7 +936,7 @@ enum PlatformType: String, CaseIterable {
     var architectures: [ArchType] {
         switch self {
         case .ios, .xros:
-            return [.arm64]
+            return [.arm64, .arm64e]
         case .tvos:
             return [.arm64, .arm64e]
         case .xrsimulator:
@@ -946,12 +946,12 @@ enum PlatformType: String, CaseIterable {
         case .macos:
             // macos 不能用arm64，不然打包release包会报错，不能通过
             #if arch(x86_64)
-            return [.x86_64, .arm64]
+            return [.x86_64, .arm64, .arm64e]
             #else
-            return [.arm64, .x86_64]
+            return [.arm64, .arm64e, .x86_64]
             #endif
         case .maccatalyst:
-            return [.arm64, .x86_64]
+            return [.arm64, .arm64e, .x86_64]
         }
     }
 
