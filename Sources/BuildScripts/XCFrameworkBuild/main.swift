@@ -16,7 +16,7 @@ enum Library: String, CaseIterable {
     var version: String {
         switch self {
         case .readline:
-            return "readline-8.2"
+            return "readline-8.3"
         }
     }
 
