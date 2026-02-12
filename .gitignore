@@ -42,7 +42,6 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 # Package.resolved
-Sources/BuildScripts/Package.resolved
 .build/
 .swiftpm/
 
@@ -120,3 +119,4 @@ dist/
 *.log
 *.xcframework
 .vscode
+Sources/BuildScripts/Package.resolved
