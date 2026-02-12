@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "buildshared",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mpvkit/BuildShared.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e7f306e532db2173e1a747c1500c00a9d69d3fc3"
+      }
+    }
+  ],
+  "version" : 2
+}
