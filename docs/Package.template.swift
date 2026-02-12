@@ -4,9 +4,12 @@ import PackageDescription
 
 let package = Package(
     name: "readline",
-    platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13)],
+    platforms: [.macOS(.v11), .iOS(.v14), .tvOS(.v14)],
     products: [
-        .library(name: "readline", targets: ["_readline"]),
+        .library(
+            name: "readline",
+            targets: ["_readline"]
+        ),
     ],
     targets: [
         // Need a dummy target to embedded correctly.
