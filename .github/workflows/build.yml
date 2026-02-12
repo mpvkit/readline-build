@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    uses: mpvkit/action/.github/workflows/build.yml@main
+    uses: mpvkit/BuildShared/.github/workflows/build.yml@main
     secrets: inherit
     with:
       version: '${{ github.event.inputs.version }}'
