@@ -1,17 +1,17 @@
 import Foundation
+import BuildShared
 
 do {
-    let options = try ArgumentOptions.parse(CommandLine.arguments)
-    try Build.performCommand(options)
+    let options = try BuildRunner.performCommand()
 
-    try BuildReadline().buildALL()
+    try BuildReadline(options: options).buildALL()
 } catch {
-    print("ERROR: \(error.localizedDescription)")
+    print(error.localizedDescription)
     exit(1)
 }
 
 
-enum Library: String, CaseIterable {
+enum Library: String, CaseIterable, BuildLibrary {
     case readline
     var version: String {
         switch self {
@@ -27,6 +27,7 @@ enum Library: String, CaseIterable {
         }
     }
 
+
     // for generate Package.swift
     var targets : [PackageTarget] {
         switch self {
@@ -34,8 +35,8 @@ enum Library: String, CaseIterable {
             return  [
                 .target(
                     name: "readline",
-                    url: "https://github.com/mpvkit/readline-build/releases/download/\(BaseBuild.options.releaseVersion)/readline.xcframework.zip",
-                    checksum: "https://github.com/mpvkit/readline-build/releases/download/\(BaseBuild.options.releaseVersion)/readline.xcframework.checksum.txt"
+                    url: "https://github.com/mpvkit/readline-build/releases/download/\(BuildRunner.options!.releaseVersion)/readline.xcframework.zip",
+                    checksum: "https://github.com/mpvkit/readline-build/releases/download/\(BuildRunner.options!.releaseVersion)/readline.xcframework.checksum.txt"
                 ),
             ]
         }
@@ -43,9 +44,10 @@ enum Library: String, CaseIterable {
 }
 
 
+
 private class BuildReadline: BaseBuild {
-    init() {
-        super.init(library: .readline)
+    init(options: ArgumentOptions) {
+        super.init(library: Library.readline, options: options)
     }
 
     override func arguments(platform: PlatformType, arch: ArchType) -> [String] {
